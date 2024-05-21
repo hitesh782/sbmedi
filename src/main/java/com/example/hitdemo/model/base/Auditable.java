@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,7 +43,9 @@ public class Auditable {
 	  @LastModifiedBy
 	  private String updatedBy;
 
+	  @JsonProperty("isActive")
 	  private boolean isActive = true;
 
-	  private boolean deleted = false;
+	  @JsonProperty("isDeleted")
+	  private boolean isDeleted = false;
 }
