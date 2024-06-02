@@ -31,32 +31,35 @@ public class HitdemoApplication {
 
 	@Bean
 	public Filter corsFilter() {
-		
+
 		return new Filter() {
-			 @Override
-		      public void init(FilterConfig filterConfig) throws ServletException {}
-			 
-			 @Override
-		      public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-		          throws IOException, ServletException {
-				 
-				 HttpServletResponse response = (HttpServletResponse) res;
-			        response.setHeader("Access-Control-Allow-Origin", "*");
-			        response.setHeader("Access-Control-Allow-Credentials", "true");
-			        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT,PATCH");
-			        response.setHeader("Access-Control-Max-Age", "3600");
-			        response.setHeader("Access-Control-Allow-Headers","Origin, Content-Type, Accept, X-Requested-With, remember-me, Authorization, Content-Encoding,x_tenant, x_tenant_skip");
-			        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-			        
-			      chain.doFilter(req, res);
-			 }
-			 
-			 @Override
-		      public void destroy() {}
+			@Override
+			public void init(FilterConfig filterConfig) throws ServletException {
+			}
+
+			@Override
+			public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+					throws IOException, ServletException {
+
+				HttpServletResponse response = (HttpServletResponse) res;
+				response.setHeader("Access-Control-Allow-Origin", "*");
+				response.setHeader("Access-Control-Allow-Credentials", "true");
+				response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT,PATCH");
+				response.setHeader("Access-Control-Max-Age", "3600");
+				response.setHeader("Access-Control-Allow-Headers",
+						"Origin, Content-Type, Accept, X-Requested-With, remember-me, Authorization, Content-Encoding,x_tenant, x_tenant_skip");
+				response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+				chain.doFilter(req, res);
+			}
+
+			@Override
+			public void destroy() {
+			}
 		};
-	
+
 	}
-	
+
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();

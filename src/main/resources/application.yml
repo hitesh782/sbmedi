@@ -9,3 +9,8 @@ spring:
       host: 127.0.0.1
       port: 27017
       database: testingmay
+      
+auth0:
+  audience: urn:auth0-authz-api
+  issuer: https://dev-raff3lhzvccgz05a.us.auth0.com/
+  

@@ -22,30 +22,30 @@ import lombok.Setter;
 public class Auditable {
 	public Auditable(final String id, final Date createdDate, final String createdBy) {
 
-	    super();
-	    this.id = id;
-	    this.createdDate = createdDate;
-	    this.createdBy = createdBy;
-	  }
+		super();
+		this.id = id;
+		this.createdDate = createdDate;
+		this.createdBy = createdBy;
+	}
 
-	  @Id
-	  private String id;
+	@Id
+	private String id;
 
-	  @CreatedDate
-	  private Date createdDate;
+	@CreatedDate
+	private Date createdDate;
 
-	  @CreatedBy
-	  private String createdBy;
+	@CreatedBy
+	private String createdBy;
 
-	  @LastModifiedDate
-	  private Date updatedDate;
+	@LastModifiedDate
+	private Date updatedDate;
 
-	  @LastModifiedBy
-	  private String updatedBy;
+	@LastModifiedBy
+	private String updatedBy;
 
-	  @JsonProperty("isActive")
-	  private boolean isActive = true;
+	@JsonProperty("isActive")
+	private boolean isActive = true;
 
-	  @JsonProperty("isDeleted")
-	  private boolean isDeleted = false;
+	@JsonProperty("isDeleted")
+	private boolean isDeleted = false;
 }

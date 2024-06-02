@@ -1,6 +1,5 @@
 package com.example.hitdemo.rest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,36 +20,34 @@ import com.example.hitdemo.model.Product;
 import com.example.hitdemo.model.query.SearchEvent;
 import com.example.hitdemo.service.ProductService;
 
-@RequestMapping(value="/products")
+@RequestMapping(value = "/products")
 @RestController
 public class ProductController {
 	@Autowired
 	private ProductService productService;
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Product createProduct(@RequestBody Product product) throws ProductException {
 		return this.productService.saveProduct(product);
 	}
-	
+
 	@PatchMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public Product updaProduct(@RequestBody Product product) throws ProductException {
 		return this.productService.saveProduct(product);
 	}
-	
-	@PostMapping(value="/criteria-search")
+
+	@PostMapping(value = "/criteria-search")
 	@ResponseStatus(HttpStatus.OK)
-	public Page<Product> search(@RequestBody final SearchEvent search, final Pageable pageable) throws SearchException{
+	public Page<Product> search(@RequestBody final SearchEvent search, final Pageable pageable) throws SearchException {
 		return this.productService.search(search, pageable);
 	}
-	
-	@DeleteMapping(value="{productId}")
+
+	@DeleteMapping(value = "{productId}")
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteProduct(@PathVariable String productId) throws ProductException {
-		 this.productService.deleteProduct(productId);
+		this.productService.deleteProduct(productId);
 	}
-	
-	
-	
+
 }

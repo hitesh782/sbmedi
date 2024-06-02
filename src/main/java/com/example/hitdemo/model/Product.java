@@ -1,6 +1,7 @@
 package com.example.hitdemo.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,4 +24,6 @@ public class Product extends Auditable {
 	
 	private String description;
 	
+	@NotNull(message = "Category must not be null")
+	private ProductCategory category;
 }
